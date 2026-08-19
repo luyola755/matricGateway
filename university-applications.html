@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Applications | Matric Gateway</title>
+    <link rel="stylesheet" href="university_application.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">Matric Gateway</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="university-applications.html" class="active">University Applications</a>
+                <a href="nsfas.html">NSFAS Support</a>
+                <a href="past-papers.html">Past Papers</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+   
+    <section class="hero hero-applications">
+        <div class="hero-overlay">
+            <h1>University Applications</h1>
+            <p>Find universities, check requirements, and access application tools</p>
+        </div>
+    </section>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="applications-section">
+        <div class="applications-container">
+
+            <!-- Province selection -->
+            <div class="province-block">
+                <label for="provinceSelect" class="province-label">Select Province</label>
+                <select id="provinceSelect" class="province-dropdown">
+                    <option value="">-- Select a province --</option>
+                    <option value="gauteng">Gauteng</option>
+                    <option value="western-cape">Western Cape</option>
+                    <option value="kwazulu-natal">KwaZulu-Natal</option>
+                    <option value="eastern-cape">Eastern Cape</option>
+                    <option value="free-state">Free State</option>
+                    <option value="mpumalanga">Mpumalanga</option>
+                    <option value="limpopo">Limpopo</option>
+                    <option value="north-west">North West</option>
+                    <option value="northern-cape">Northern Cape</option>
+                </select>
+            </div>
+
+            <!-- University list & info grid -->
+            <div class="university-grid">
+
+                <!-- Left: University List -->
+                <div class="university-list">
+                    <h2>Universities in South Africa</h2>
+                    <ul>
+                        <li>University of Cape Town</li>
+                        <li>University of the Witwatersrand</li>
+                        <li>University of Pretoria</li>
+                        <li>Cape Peninsula University of Technology</li>
+                        <li>Tshwane University of Technology</li>
+                        <li>University of the Free State</li>
+                        <li>North-West University</li>
+                        <li>University of Johannesburg</li>
+                    </ul>
+                </div>
+
+                <!-- Right: Info Cards -->
+                <div class="university-info">
+                    <div class="info-card">
+                        <h3>Application / NSFAS</h3>
+                        <p><a href="https://www.nsfas.org.za" target="_blank">Apply for NSFAS funding →</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Prospectus</h3>
+                        <p><a href="#">Download prospectus (PDF)</a></p>
+                    </div>
+                    <div class="info-card">
+                        <h3>APS Calculator</h3>
+                        <div class="aps-calculator">
+                            <input type="number" placeholder="Enter your APS score" />
+                            <button class="calc-btn">Calculate</button>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Required Documents</h3>
+                        <ul>
+                            <li>Certified ID copy</li>
+                            <li>Grade 11 results</li>
+                            <li>Proof of residence</li>
+                            <li>Parent/guardian consent (if under 18)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Requirements -->
+            <div class="requirements-block">
+                <h2>Application Requirements</h2>
+                <p>
+                    Minimum APS score of <strong>28+</strong> for most degree programmes.
+                    Check university‑specific requirements before applying.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+              <a href="about.html#contact">Contact</a>
+<a href="nsfas.html">Help Center</a>
+            </div>
+            <div class="footer-box">
+                <h3>Student Support</h3>
+                <p>Study help available</p>
+                <p>Response within 24–48 hours</p>
+                <p>Email: support@matricgateway.co.za</p>
+            </div>
+            <div class="footer-box">
+                <h3>Follow Us</h3>
+                <div class="socials">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="image_Matricgateway/facebook.png" alt="Facebook" />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="image_Matricgateway/insta.png" alt="Instagram" />
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank">
+                        <img src="image_Matricgateway/youtube.png" alt="YouTube" />
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank">
+                        <img src="image_Matricgateway/TikTok.png" alt="TikTok" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Matric Gateway | Built for Students</p>
+        </div>
+    </footer>
+
+</body>
+</html>

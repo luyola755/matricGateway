@@ -7,8 +7,81 @@
 
 body{
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #f0f2f8;
     line-height: 1.6;
+}
+
+
+.site-header {
+    background: #0b1f4d;
+    padding: 18px 40px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.main-nav {
+    display: flex;
+    gap: 28px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    opacity: 0.85;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    opacity: 1;
+    border-bottom: 2px solid #4a7ba6;
+}
+
+
+.hero {
+    position: relative;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-nsfas {
+    background-image: linear-gradient(rgba(11,31,77,0.6), rgba(11,31,77,0.6)), url('images/nsfas-hero.jpg');
+}
+
+.hero-overlay {
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-overlay h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.hero-overlay p {
+    font-size: 16px;
+    max-width: 600px;
+    opacity: 0.9;
 }
 
 
@@ -66,7 +139,7 @@ body{
 
 
 .card h3{
-    color: black;
+    color: #0b1f4d;
     margin-bottom: 10px;
 }
 
@@ -79,7 +152,7 @@ body{
 .image-box{
     width: 260px;
     height: 260px;
-    border: 3px solid black;
+    border: 3px solid #0b1f4d;
     background-color: white;
     overflow: hidden;
 }
@@ -94,7 +167,7 @@ body{
 .apply-btn,
 .download-btn{
     display: inline-block;
-    background-color: #14213d;
+    background-color: #4a7ba6;
     color: white;
     text-decoration: none;
     padding: 10px 18px;
@@ -108,7 +181,7 @@ body{
 
 .apply-btn:hover,
 .download-btn:hover{
-    background-color: black;
+    background-color: #3b6485;
 }
 
 
@@ -119,7 +192,7 @@ body{
 
 .documents-card li{
     margin-bottom: 8px;
-    color: black;
+    color: #333;
     font-size: 15px;
 }
 
@@ -218,4 +291,57 @@ body{
     border-top: 1px solid rgba(255,255,255,0.2);
     font-size: 13px;
     opacity: 0.9;
+}
+
+
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .applications-container,
+body.dark-mode .filters-container,
+body.dark-mode .papers-container,
+body.dark-mode .tips-container,
+body.dark-mode .intro-card,
+body.dark-mode .card,
+body.dark-mode .info-card {
+    background: #2d2d44;
+    border-color: #3d3d5c;
+}
+
+body.dark-mode .paper-card,
+body.dark-mode .tip-card {
+    background: #2d2d44;
+    border-color: #3d3d5c;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .logo {
+    color: #ffffff;
+}
+
+body.dark-mode p,
+body.dark-mode .paper-meta {
+    color: #b0b0c0;
+}
+
+body.dark-mode .filter-dropdown,
+body.dark-mode .province-dropdown {
+    background: #2d2d44;
+    color: #e0e0e0;
+    border-color: #4d4d6c;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #2d2d44;
+    color: #e0e0e0;
+    border-color: #4d4d6c;
+}
+
+body.dark-mode .footer {
+    background: #1a1a2e;
 }

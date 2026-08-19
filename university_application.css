@@ -1,0 +1,459 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    color: #1a2a3a;
+    line-height: 1.6;
+}
+
+
+.site-header {
+    background-color: #002b5e;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.main-nav {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    color: #e0e7f0;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 6px 0;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: #ffffff;
+    border-bottom-color: #ffb347;
+}
+
+/* ===== HERO ===== */
+.hero-applications {
+    background: linear-gradient(135deg, #003b73 0%, #00509e 100%);
+    padding: 60px 20px;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    color: #d4e3f5;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== APPLICATIONS SECTION ===== */
+.applications-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.applications-container {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 43, 94, 0.08);
+    border: 1px solid #e6edf5;
+}
+
+/* Province selection */
+.province-block {
+    margin-bottom: 30px;
+}
+
+.province-label {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #002b5e;
+    margin-bottom: 8px;
+}
+
+.province-dropdown {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 18px;
+    font-size: 1rem;
+    border: 2px solid #d0dbe8;
+    border-radius: 10px;
+    background-color: #fafcff;
+    color: #1a2a3a;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23002b5e' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+}
+
+.province-dropdown:focus {
+    border-color: #00509e;
+    box-shadow: 0 0 0 4px rgba(0, 80, 158, 0.15);
+}
+
+/* Grid: list + info */
+.university-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.university-list h2 {
+    font-size: 1.5rem;
+    color: #002b5e;
+    margin-bottom: 15px;
+    border-left: 5px solid #ffb347;
+    padding-left: 15px;
+}
+
+.university-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.university-list li {
+    padding: 12px 16px;
+    background: #f8faff;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid #00509e;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.university-list li:hover {
+    background: #eef4fc;
+}
+
+/* Info cards */
+.university-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background: #f8faff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e6edf5;
+}
+
+.info-card h3 {
+    font-size: 1.1rem;
+    color: #002b5e;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffb347;
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
+.info-card a {
+    color: #00509e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.info-card a:hover {
+    color: #ffb347;
+    text-decoration: underline;
+}
+
+.info-card ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.info-card ul li {
+    margin-bottom: 4px;
+}
+
+.aps-calculator {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.aps-calculator input {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px 14px;
+    border: 2px solid #d0dbe8;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.aps-calculator input:focus {
+    border-color: #00509e;
+}
+
+.calc-btn {
+    padding: 10px 20px;
+    background: #ffb347;
+    color: #002b5e;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.calc-btn:hover {
+    background: #ffa020;
+    transform: translateY(-2px);
+}
+
+/* Requirements block */
+.requirements-block {
+    margin-top: 30px;
+    padding: 20px;
+    background: #eef4fc;
+    border-radius: 12px;
+    border-left: 6px solid #ffb347;
+}
+
+.requirements-block h2 {
+    font-size: 1.5rem;
+    color: #002b5e;
+    margin-bottom: 8px;
+}
+
+.requirements-block p {
+    font-size: 1.05rem;
+    color: #1a2a3a;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #002b5e;
+    color: white;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-box h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #ffb347;
+}
+
+.footer-box a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 6px 0;
+    font-size: 14px;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+
+.footer-box a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-box p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin: 6px 0;
+}
+
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.socials a {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.socials a:hover {
+    transform: scale(1.2);
+}
+
+.socials img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .main-nav {
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .university-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .province-dropdown {
+        max-width: 100%;
+    }
+
+    .applications-container {
+        padding: 25px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-overlay h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1rem;
+    }
+
+    .main-nav a {
+        font-size: 0.9rem;
+    }
+
+    .aps-calculator {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .calc-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .applications-container,
+body.dark-mode .filters-container,
+body.dark-mode .papers-container,
+body.dark-mode .tips-container,
+body.dark-mode .intro-card,
+body.dark-mode .card,
+body.dark-mode .info-card {
+    background: #2d2d44;
+    border-color: #3d3d5c;
+}
+
+body.dark-mode .paper-card,
+body.dark-mode .tip-card {
+    background: #2d2d44;
+    border-color: #3d3d5c;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .logo {
+    color: #ffffff;
+}
+
+body.dark-mode p,
+body.dark-mode .paper-meta {
+    color: #b0b0c0;
+}
+
+body.dark-mode .filter-dropdown,
+body.dark-mode .province-dropdown {
+    background: #2d2d44;
+    color: #e0e0e0;
+    border-color: #4d4d6c;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #2d2d44;
+    color: #e0e0e0;
+    border-color: #4d4d6c;
+}
+
+body.dark-mode .footer {
+    background: #1a1a2e;
+}
