@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="header-container">
             <div class="logo">Matric Gateway</div>
@@ -23,7 +22,6 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
     <section class="hero hero-pastpapers">
         <div class="hero-overlay">
             <h1>Past Exam Papers</h1>
@@ -31,7 +29,6 @@
         </div>
     </section>
 
-    <!-- ===== FILTERS SECTION ===== -->
     <section class="filters-section">
         <div class="filters-container">
             
@@ -94,218 +91,245 @@
             </div>
         </div>
     </section>
+<section class="papers-section">
+    <div class="papers-container">
 
-    <!-- ===== PAPERS GRID ===== -->
-    <section class="papers-section">
-        <div class="papers-container">
-            <div class="papers-grid" id="papersGrid">
-                <!-- Mathematics Papers -->
-                <div class="paper-card" data-subject="mathematics" data-year="2025" data-type="november">
-                    <div class="paper-header">
-                        <h3>Mathematics</h3>
-                        <span class="year-badge">2025</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
+        <div class="papers-grid" id="papersGrid">
+            <div class="paper-card"
+                 data-subject="mathematics"
+                 data-year="2025">
+
+                <div class="paper-header">
+                    <h3>Mathematics</h3>
+                    <span class="year-badge">2025</span>
                 </div>
 
-                <div class="paper-card" data-subject="mathematics" data-year="2025" data-type="november">
-                    <div class="paper-header">
-                        <h3>Mathematics</h3>
-                        <span class="year-badge">2025</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 2</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
+                <p class="paper-meta">
+                    2025 Examination | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/MATHEMATICS PAPER 1 2025.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
                 </div>
 
-                <div class="paper-card" data-subject="mathematics" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Mathematics</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- Physical Sciences -->
-                <div class="paper-card" data-subject="physical-sciences" data-year="2025" data-type="november">
-                    <div class="paper-header">
-                        <h3>Physical Sciences</h3>
-                        <span class="year-badge">2025</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1 (Physics)</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <div class="paper-card" data-subject="physical-sciences" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Physical Sciences</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 2 (Chemistry)</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- English -->
-                <div class="paper-card" data-subject="english" data-year="2025" data-type="november">
-                    <div class="paper-header">
-                        <h3>English Home Language</h3>
-                        <span class="year-badge">2025</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- Life Sciences -->
-                <div class="paper-card" data-subject="life-sciences" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Life Sciences</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <div class="paper-card" data-subject="life-sciences" data-year="2023" data-type="november">
-                    <div class="paper-header">
-                        <h3>Life Sciences</h3>
-                        <span class="year-badge">2023</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 2</p>
-                   <div class="paper-actions">
-
-    <a href="papers/mathematics-2025-paper1.pdf"
-       class="view-btn"
-       target="_blank">
-        View Paper
-    </a>
-
-    <a href="papers/mathematics-2025-paper1.pdf"
-       class="download-btn"
-       download>
-        Download Paper
-    </a>
-
-    <a href="papers/mathematics-2025-memo.pdf"
-       class="download-btn memo-btn"
-       download>
-        Download Memo
-    </a>
-
-</div>
-                </div>
-
-                <!-- Accounting -->
-                <div class="paper-card" data-subject="accounting" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Accounting</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- Business Studies -->
-                <div class="paper-card" data-subject="business-studies" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Business Studies</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- Geography -->
-                <div class="paper-card" data-subject="geography" data-year="2024" data-type="november">
-                    <div class="paper-header">
-                        <h3>Geography</h3>
-                        <span class="year-badge">2024</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
-
-                <!-- Economics -->
-                <div class="paper-card" data-subject="economics" data-year="2023" data-type="november">
-                    <div class="paper-header">
-                        <h3>Economics</h3>
-                        <span class="year-badge">2023</span>
-                    </div>
-                    <p class="paper-meta">November Exam | Paper 1</p>
-                    <div class="paper-actions">
-                        <a href="#" class="download-btn">📄 Download Paper</a>
-                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
-                    </div>
-                </div>
             </div>
 
-            <!-- No results message -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <p>No papers found matching your filters. Try adjusting your search criteria.</p>
+            <div class="paper-card"
+                 data-subject="mathematics"
+                 data-year="2025">
+
+                <div class="paper-header">
+                    <h3>Mathematics</h3>
+                    <span class="year-badge">2025</span>
+                </div>
+
+                <p class="paper-meta">
+                    2025 Examination | Paper 2
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/MATHEMATICS PAPER 2 2025.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
             </div>
+
+            <div class="paper-card"
+                 data-subject="mathematics"
+                 data-year="2024">
+
+                <div class="paper-header">
+                    <h3>Mathematics</h3>
+                    <span class="year-badge">2024</span>
+                </div>
+
+                <p class="paper-meta">
+                    2024 Examination | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/MATHEMATICS PAPER 1 2024.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="paper-card"
+                 data-subject="economics"
+                 data-year="2023">
+
+                <div class="paper-header">
+                    <h3>Economics</h3>
+                    <span class="year-badge">2023</span>
+                </div>
+
+                <p class="paper-meta">
+                    2023 Examination | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/ECONOMICS PAPER 1 2023.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+            
+            <div class="paper-card"
+                 data-subject="english"
+                 data-year="2024">
+
+                <div class="paper-header">
+                    <h3>English Home Language</h3>
+                    <span class="year-badge">Paper 1</span>
+                </div>
+
+                <p class="paper-meta">
+                    English Home Language | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/ENGLISH HOME LANGUAGE PAPER 1.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="paper-card"
+                 data-subject="geography"
+                 data-year="2024">
+
+                <div class="paper-header">
+                    <h3>Geography</h3>
+                    <span class="year-badge">2024</span>
+                </div>
+
+                <p class="paper-meta">
+                    2024 Examination | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/GEOGRAPHY PAPER 1 2024.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="paper-card"
+                 data-subject="life-science"
+                 data-year="2024">
+
+                <div class="paper-header">
+                    <h3>Life Science</h3>
+                    <span class="year-badge">Paper 1</span>
+                </div>
+
+                <p class="paper-meta">
+                    Life Science | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/LIFE SCIENCE PAPER 1.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="paper-card"
+                 data-subject="life-science"
+                 data-year="2023">
+
+                <div class="paper-header">
+                    <h3>Life Science</h3>
+                    <span class="year-badge">2023</span>
+                </div>
+
+                <p class="paper-meta">
+                    2023 Examination | Paper 2
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/LIFE SCIENCE PAPER 2 2023.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="paper-card"
+                 data-subject="physical-science"
+                 data-year="2025">
+
+                <div class="paper-header">
+                    <h3>Physical Science</h3>
+                    <span class="year-badge">2025</span>
+                </div>
+
+                <p class="paper-meta">
+                    2025 Examination | Paper 1
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/PHYSICAL SCIENCE PAPER 1 2025.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+            
+            <div class="paper-card"
+                 data-subject="physical-science"
+                 data-year="2024">
+
+                <div class="paper-header">
+                    <h3>Physical Science</h3>
+                    <span class="year-badge">2024</span>
+                </div>
+
+                <p class="paper-meta">
+                    2024 Examination | Paper 2
+                </p>
+
+                <div class="paper-actions">
+                    <a href="papers/PHYSICAL SCIENCE PAPER 2 2024.pdf"
+                       class="download-btn"
+                       download>
+                        Download Paper
+                    </a>
+                </div>
+
+            </div>
+
         </div>
-    </section>
 
-    <!-- ===== STUDY TIPS ===== -->
-    <section class="tips-section">
-        <div class="tips-container">
-            <h2>Study Tips for Past Papers</h2>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <span class="tip-number">01</span>
-                    <h3>Time Yourself</h3>
-                    <p>Simulate exam conditions by timing yourself while completing past papers.</p>
-                </div>
-                <div class="tip-card">
-                    <span class="tip-number">02</span>
-                    <h3>Review Memos</h3>
-                    <p>Check your answers against the memo to understand where you lost marks.</p>
-                </div>
-                <div class="tip-card">
-                    <span class="tip-number">03</span>
-                    <h3>Identify Weak Areas</h3>
-                    <p>Focus on topics where you consistently lose marks and practice more.</p>
-                </div>
-                <div class="tip-card">
-                    <span class="tip-number">04</span>
-                    <h3>Practice Regularly</h3>
-                    <p>Set aside time each week to complete past papers for different subjects.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-box">
