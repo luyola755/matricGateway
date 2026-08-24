@@ -327,55 +327,65 @@
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    
     <script>
-        function filterPapers() {
-            const subject = document.getElementById('subjectFilter').value;
-            const year = document.getElementById('yearFilter').value;
-            const examType = document.getElementById('examType').value;
+       function filterPapers() {
 
-            const cards = document.querySelectorAll('.paper-card');
-            let visibleCount = 0;
+    const subject = document.getElementById("subjectFilter").value.toLowerCase();
+    const year = document.getElementById("yearFilter").value;
+    const examType = document.getElementById("examType").value.toLowerCase();
+    const search = document.getElementById("searchPapers").value.toLowerCase().trim();
 
-            cards.forEach(card => {
-                const cardSubject = card.dataset.subject;
-                const cardYear = card.dataset.year;
-                const cardType = card.dataset.type;
+    const cards = document.querySelectorAll(".paper-card");
+    const noResults = document.getElementById("noResults");
 
-                let show = true;
+    let visibleCards = 0;
 
-                if (subject && cardSubject !== subject) show = false;
-                if (year && cardYear !== year) show = false;
-                if (examType && cardType !== examType) show = false;
+    cards.forEach(card => {
 
-                if (show) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        const cardSubject = card.dataset.subject.toLowerCase();
+        const cardYear = card.dataset.year;
+        const cardType = card.dataset.type.toLowerCase();
 
-            const noResults = document.getElementById('noResults');
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-            }
+        
+        const cardText = card.textContent.toLowerCase();
+
+        let matches = true;
+
+        
+        if (subject && cardSubject !== subject) {
+            matches = false;
         }
 
-        function resetFilters() {
-            document.getElementById('subjectFilter').value = '';
-            document.getElementById('yearFilter').value = '';
-            document.getElementById('examType').value = '';
-
-            const cards = document.querySelectorAll('.paper-card');
-            cards.forEach(card => {
-                card.style.display = 'block';
-            });
-
-            document.getElementById('noResults').style.display = 'none';
+        
+        if (year && cardYear !== year) {
+            matches = false;
         }
+
+        
+        if (examType && cardType !== examType) {
+            matches = false;
+        }
+
+        
+        if (search && !cardText.includes(search)) {
+            matches = false;
+        }
+
+        if (matches) {
+            card.style.display = "block";
+            visibleCards++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (visibleCards === 0) {
+        noResults.style.display = "block";
+    } else {
+        noResults.style.display = "none";
+    }
+}
     </script>
 
 </body>
