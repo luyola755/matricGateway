@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Past Papers | Matric Gateway</title>
+    <link rel="stylesheet" href="past-papers.css" />
+    <script src="auth.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">Matric Gateway</div>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="university-applications.html">University Applications</a>
+                <a href="nsfas.html">NSFAS Support</a>
+                <a href="past-papers.html" class="active">Past Papers</a>
+                <a href="about.html">About</a>
+                <a href="students.html">Students</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero hero-pastpapers">
+        <div class="hero-overlay">
+            <h1>Past Exam Papers</h1>
+            <p>Download and practice with past matric exam papers to boost your preparation</p>
+        </div>
+    </section>
+
+    <!-- ===== FILTERS SECTION ===== -->
+    <section class="filters-section">
+        <div class="filters-container">
+            
+            <h2>Find Past Papers</h2>
+            <div class="filter-group">
+                <div class="filter-item">
+                    <label for="subjectFilter">Subject</label>
+                    <select id="subjectFilter" class="filter-dropdown">
+                        <option value="">All Subjects</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="mathematical-literacy">Mathematical Literacy</option>
+                        <option value="english">English Home Language</option>
+                        <option value="afrikaans">Afrikaans Home Language</option>
+                        <option value="physical-sciences">Physical Sciences</option>
+                        <option value="life-sciences">Life Sciences</option>
+                        <option value="accounting">Accounting</option>
+                        <option value="business-studies">Business Studies</option>
+                        <option value="economics">Economics</option>
+                        <option value="history">History</option>
+                        <option value="geography">Geography</option>
+                        <option value="life-orientation">Life Orientation</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="yearFilter">Year</label>
+                    <select id="yearFilter" class="filter-dropdown">
+                        <option value="">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="examType">Exam Type</label>
+                    <select id="examType" class="filter-dropdown">
+                        <option value="">All Types</option>
+                        <option value="november">November</option>
+                        <option value="june">June</option>
+                        <option value="supplementary">Supplementary</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <button class="filter-btn" onclick="filterPapers()">Apply Filters</button>
+                    <button class="filter-btn reset-btn" onclick="resetFilters()">Reset</button>
+                </div>
+
+                <div class="filter-item">
+    <label for="searchPapers">Search</label>
+    <input type="text" id="searchPapers" class="filter-dropdown" placeholder="Search by subject or year..." />
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PAPERS GRID ===== -->
+    <section class="papers-section">
+        <div class="papers-container">
+            <div class="papers-grid" id="papersGrid">
+                <!-- Mathematics Papers -->
+                <div class="paper-card" data-subject="mathematics" data-year="2025" data-type="november">
+                    <div class="paper-header">
+                        <h3>Mathematics</h3>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <div class="paper-card" data-subject="mathematics" data-year="2025" data-type="november">
+                    <div class="paper-header">
+                        <h3>Mathematics</h3>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 2</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <div class="paper-card" data-subject="mathematics" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Mathematics</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Physical Sciences -->
+                <div class="paper-card" data-subject="physical-sciences" data-year="2025" data-type="november">
+                    <div class="paper-header">
+                        <h3>Physical Sciences</h3>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1 (Physics)</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <div class="paper-card" data-subject="physical-sciences" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Physical Sciences</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 2 (Chemistry)</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- English -->
+                <div class="paper-card" data-subject="english" data-year="2025" data-type="november">
+                    <div class="paper-header">
+                        <h3>English Home Language</h3>
+                        <span class="year-badge">2025</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Life Sciences -->
+                <div class="paper-card" data-subject="life-sciences" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Life Sciences</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <div class="paper-card" data-subject="life-sciences" data-year="2023" data-type="november">
+                    <div class="paper-header">
+                        <h3>Life Sciences</h3>
+                        <span class="year-badge">2023</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 2</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Accounting -->
+                <div class="paper-card" data-subject="accounting" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Accounting</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Business Studies -->
+                <div class="paper-card" data-subject="business-studies" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Business Studies</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Geography -->
+                <div class="paper-card" data-subject="geography" data-year="2024" data-type="november">
+                    <div class="paper-header">
+                        <h3>Geography</h3>
+                        <span class="year-badge">2024</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+
+                <!-- Economics -->
+                <div class="paper-card" data-subject="economics" data-year="2023" data-type="november">
+                    <div class="paper-header">
+                        <h3>Economics</h3>
+                        <span class="year-badge">2023</span>
+                    </div>
+                    <p class="paper-meta">November Exam | Paper 1</p>
+                    <div class="paper-actions">
+                        <a href="#" class="download-btn">📄 Download Paper</a>
+                        <a href="#" class="download-btn memo-btn">📋 Memo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No results message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>No papers found matching your filters. Try adjusting your search criteria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STUDY TIPS ===== -->
+    <section class="tips-section">
+        <div class="tips-container">
+            <h2>Study Tips for Past Papers</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <span class="tip-number">01</span>
+                    <h3>Time Yourself</h3>
+                    <p>Simulate exam conditions by timing yourself while completing past papers.</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-number">02</span>
+                    <h3>Review Memos</h3>
+                    <p>Check your answers against the memo to understand where you lost marks.</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-number">03</span>
+                    <h3>Identify Weak Areas</h3>
+                    <p>Focus on topics where you consistently lose marks and practice more.</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-number">04</span>
+                    <h3>Practice Regularly</h3>
+                    <p>Set aside time each week to complete past papers for different subjects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+              <a href="about.html#contact">Contact</a>
+<a href="nsfas.html">Help Center</a>
+            </div>
+            <div class="footer-box">
+                <h3>Student Support</h3>
+                <p>Study help available</p>
+                <p>Response within 24–48 hours</p>
+                <p>Email: support@matricgateway.co.za</p>
+            </div>
+            <div class="footer-box">
+                <h3>Follow Us</h3>
+                <div class="socials">
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="image_Matricgateway/facebook.png" alt="Facebook" />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="image_Matricgateway/insta.png" alt="Instagram" />
+                    </a>
+                    <a href="https://www.youtube.com" target="_blank">
+                        <img src="image_Matricgateway/youtube.png" alt="YouTube" />
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank">
+                        <img src="image_Matricgateway/TikTok.png" alt="TikTok" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Matric Gateway | Built for Students</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function filterPapers() {
+            const subject = document.getElementById('subjectFilter').value;
+            const year = document.getElementById('yearFilter').value;
+            const examType = document.getElementById('examType').value;
+
+            const cards = document.querySelectorAll('.paper-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cardSubject = card.dataset.subject;
+                const cardYear = card.dataset.year;
+                const cardType = card.dataset.type;
+
+                let show = true;
+
+                if (subject && cardSubject !== subject) show = false;
+                if (year && cardYear !== year) show = false;
+                if (examType && cardType !== examType) show = false;
+
+                if (show) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        function resetFilters() {
+            document.getElementById('subjectFilter').value = '';
+            document.getElementById('yearFilter').value = '';
+            document.getElementById('examType').value = '';
+
+            const cards = document.querySelectorAll('.paper-card');
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+
+            document.getElementById('noResults').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

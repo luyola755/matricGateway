@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students | Matric Gateway</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="auth.js"></script>
+    <script src="script.js" defer></script>
+
+    <style>
+        /* ============================================
+           STUDENTS PAGE — Add on top of Style.css
+           ============================================ */
+
+        .students-section {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .students-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .students-header h1 {
+            color: #0b1f4d;
+            font-size: 28px;
+        }
+
+        .add-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .add-btn:hover {
+            background: #388E3C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Search Bar */
+        .search-bar {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-bar input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 2px solid #e0e5ee;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: #4a7ba6;
+        }
+
+        .search-bar .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .search-bar .btn-search {
+            background: #4a7ba6;
+            color: white;
+        }
+
+        .search-bar .btn-search:hover {
+            background: #3b6485;
+        }
+
+        .search-bar .btn-reset {
+            background: #e0e5ee;
+            color: #0b1f4d;
+        }
+
+        /* Table */
+        .students-table-wrapper {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .students-table thead {
+            background: #0b1f4d;
+            color: white;
+        }
+
+        .students-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .students-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eef1f6;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .students-table tbody tr:hover {
+            background: #f8faff;
+        }
+
+        .students-table .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-edit {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #f57c00;
+        }
+
+        .btn-delete {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #d32f2f;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #0b1f4d;
+        }
+
+        /* Stats cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card .stat-icon {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0b1f4d;
+        }
+
+        .stat-card .stat-label {
+            font-size: 13px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           MODAL (for Add/Edit)
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 16px;
+            padding: 35px 30px;
+            width: 100%;
+            max-width: 480px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #999;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-box h2 {
+            color: #0b1f4d;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e5ee;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4a7ba6;
+        }
+
+        .form-group .error-text {
+            color: #d32f2f;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-group .error-text.show {
+            display: block;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .btn-save {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #388E3C;
+        }
+
+        .btn-cancel {
+            background: #e0e5ee;
+            color: #0b1f4d;
+        }
+
+        .btn-cancel:hover {
+            background: #d0dbe8;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #333;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.success { background: #4CAF50; }
+        .toast.error { background: #d32f2f; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Dark mode */
+        body.dark-mode .students-table-wrapper,
+        body.dark-mode .search-bar,
+        body.dark-mode .stat-card,
+        body.dark-mode .modal-box {
+            background: #2d2d44;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .students-table td {
+            color: #e0e0e0;
+            border-color: #3d3d5c;
+        }
+
+        body.dark-mode .form-group input {
+            background: #2d2d44;
+            color: #e0e0e0;
+            border-color: #4d4d6c;
+        }
+
+        @media (max-width: 600px) {
+            .students-header h1 { font-size: 22px; }
+            .students-header { flex-direction: column; align-items: stretch; }
+            .add-btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo">Matric Gateway</div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="university-applications.html">University Applications</a>
+            <a href="nsfas.html">NSFAS Support</a>
+            <a href="past-papers.html">Past Papers</a>
+            <a href="about.html">About</a>
+            <a href="students.html" class="active">Students</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<section class="students-section">
+
+    <div class="students-header">
+        <h1>📚 Student Management</h1>
+        <button class="add-btn" onclick="openAddModal()">➕ Add New Student</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-icon">👨‍🎓</div>
+            <div class="stat-number" id="totalStudents">0</div>
+            <div class="stat-label">Total Students</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📖</div>
+            <div class="stat-number" id="totalCourses">0</div>
+            <div class="stat-label">Courses</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">✉️</div>
+            <div class="stat-number" id="totalEmails">0</div>
+            <div class="stat-label">Contactable</div>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="🔍 Search by name, email, or course..." oninput="handleSearch()">
+        <button class="btn btn-search" onclick="handleSearch()">Search</button>
+        <button class="btn btn-reset" onclick="resetSearch()">Reset</button>
+    </div>
+
+    <!-- Table -->
+    <div class="students-table-wrapper">
+        <table class="students-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+                <!-- Populated by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <h3>No students found</h3>
+            <p>Click "Add New Student" to get started</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- ===== ADD/EDIT MODAL ===== -->
+<div class="modal-overlay" id="studentModal">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <h2 id="modalTitle">Add New Student</h2>
+
+        <form id="studentForm" onsubmit="saveStudent(event)">
+            <input type="hidden" id="studentId">
+
+            <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" placeholder="Enter first name" required>
+                <div class="error-text" id="firstNameError">First name is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" placeholder="Enter last name" required>
+                <div class="error-text" id="lastNameError">Last name is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" placeholder="student@example.com" required>
+                <div class="error-text" id="emailError">Valid email is required</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="0712345678">
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course *</label>
+                <input type="text" id="course" placeholder="e.g. BSc Computer Science" required>
+                <div class="error-text" id="courseError">Course is required</div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn-save" id="saveBtn">💾 Save Student</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="students.html">Students</a>
+            <a href="about.html">About Us</a>
+            <a href="students.html">Students</a>
+        </div>
+        <div class="footer-box">
+            <h3>Student Support</h3>
+            <p>Study help available</p>
+            <p>Email: support@matricgateway.co.za</p>
+        </div>
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="socials">
+                <a href="https://www.facebook.com" target="_blank">
+                    <img src="image_Matricgateway/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com" target="_blank">
+                    <img src="image_Matricgateway/insta.png" alt="Instagram">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Matric Gateway | Built for Students</p>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    // ============================================
+    // CONFIG
+    // ============================================
+    const API_URL = 'http://localhost:5000/api';
+    let allStudents = [];
+
+    // ============================================
+    // LOAD STUDENTS (READ)
+    // ============================================
+    async function loadStudents() {
+        try {
+            const response = await fetch(`${API_URL}/students`);
+            allStudents = await response.json();
+
+            renderTable(allStudents);
+            updateStats(allStudents);
+
+        } catch (error) {
+            console.error('Error loading students:', error);
+            showToast('Failed to load students', 'error');
+        }
+    }
+
+    // ============================================
+    // RENDER TABLE
+    // ============================================
+    function renderTable(students) {
+        const tbody = document.getElementById('studentsTableBody');
+        const emptyState = document.getElementById('emptyState');
+
+        if (students.length === 0) {
+            tbody.innerHTML = '';
+            emptyState.style.display = 'block';
+            return;
+        }
+
+        emptyState.style.display = 'none';
+        tbody.innerHTML = students.map(s => `
+            <tr>
+                <td>${s.id}</td>
+                <td>${escapeHtml(s.firstName)}</td>
+                <td>${escapeHtml(s.lastName)}</td>
+                <td>${escapeHtml(s.email)}</td>
+                <td>${escapeHtml(s.phone || '-')}</td>
+                <td>${escapeHtml(s.course)}</td>
+                <td>
+                    <div class="actions">
+                        <button class="btn-edit" onclick="openEditModal(${s.id})">✏️ Edit</button>
+                        <button class="btn-delete" onclick="deleteStudent(${s.id}, '${escapeHtml(s.firstName)} ${escapeHtml(s.lastName)}')">🗑️ Delete</button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // ============================================
+    // STATS
+    // ============================================
+    function updateStats(students) {
+        document.getElementById('totalStudents').textContent = students.length;
+        document.getElementById('totalCourses').textContent = new Set(students.map(s => s.course)).size;
+        document.getElementById('totalEmails').textContent = students.filter(s => s.email).length;
+    }
+
+    // ============================================
+    // SEARCH
+    // ============================================
+    function handleSearch() {
+        const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+        if (!query) {
+            renderTable(allStudents);
+            return;
+        }
+
+        const filtered = allStudents.filter(s =>
+            (s.firstName || '').toLowerCase().includes(query) ||
+            (s.lastName || '').toLowerCase().includes(query) ||
+            (s.email || '').toLowerCase().includes(query) ||
+            (s.course || '').toLowerCase().includes(query) ||
+            (s.phone || '').toLowerCase().includes(query)
+        );
+
+        renderTable(filtered);
+    }
+
+    function resetSearch() {
+        document.getElementById('searchInput').value = '';
+        renderTable(allStudents);
+    }
+
+    // ============================================
+    // ADD STUDENT (CREATE)
+    // ============================================
+    function openAddModal() {
+        document.getElementById('modalTitle').textContent = 'Add New Student';
+        document.getElementById('studentForm').reset();
+        document.getElementById('studentId').value = '';
+        document.getElementById('studentModal').classList.add('active');
+        document.getElementById('firstName').focus();
+    }
+
+    // ============================================
+    // EDIT STUDENT (UPDATE)
+    // ============================================
+    function openEditModal(id) {
+        const s = allStudents.find(x => x.id === id);
+        if (!s) return;
+
+        document.getElementById('modalTitle').textContent = 'Edit Student';
+        document.getElementById('studentId').value = s.id;
+        document.getElementById('firstName').value = s.firstName;
+        document.getElementById('lastName').value = s.lastName;
+        document.getElementById('email').value = s.email;
+        document.getElementById('phone').value = s.phone || '';
+        document.getElementById('course').value = s.course;
+        document.getElementById('studentModal').classList.add('active');
+    }
+
+    // ============================================
+    // SAVE STUDENT (CREATE or UPDATE)
+    // ============================================
+    async function saveStudent(event) {
+        event.preventDefault();
+
+        const id = document.getElementById('studentId').value;
+        const studentData = {
+            firstName: document.getElementById('firstName').value.trim(),
+            lastName: document.getElementById('lastName').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            course: document.getElementById('course').value.trim()
+        };
+
+        // Validation
+        if (!studentData.firstName || !studentData.lastName || !studentData.email || !studentData.course) {
+            showToast('Please fill in all required fields', 'error');
+            return;
+        }
+
+        const saveBtn = document.getElementById('saveBtn');
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+
+        try {
+            const url = id ? `${API_URL}/students/${id}` : `${API_URL}/students`;
+            const method = id ? 'PUT' : 'POST';
+
+            const response = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(studentData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showToast(result.message || 'Saved successfully', 'success');
+                closeModal();
+                loadStudents();
+            } else {
+                showToast(result.message || 'Error saving', 'error');
+            }
+        } catch (error) {
+            console.error('Save error:', error);
+            showToast('Cannot connect to server', 'error');
+        } finally {
+            saveBtn.disabled = false;
+            saveBtn.textContent = '💾 Save Student';
+        }
+    }
+
+    // ============================================
+    // DELETE STUDENT
+    // ============================================
+    async function deleteStudent(id, name) {
+        if (!confirm(`Delete "${name}"?\n\nThis cannot be undone.`)) return;
+
+        try {
+            const response = await fetch(`${API_URL}/students/${id}`, {
+                method: 'DELETE'
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showToast('Student deleted', 'success');
+                loadStudents();
+            } else {
+                showToast(result.message || 'Error deleting', 'error');
+            }
+        } catch (error) {
+            console.error('Delete error:', error);
+            showToast('Cannot connect to server', 'error');
+        }
+    }
+
+    // ============================================
+    // MODAL CONTROL
+    // ============================================
+    function closeModal() {
+        document.getElementById('studentModal').classList.remove('active');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('studentModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    // Escape key closes modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // ============================================
+    // TOAST NOTIFICATION
+    // ============================================
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type} show`;
+        setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // ============================================
+    // HTML ESCAPE (security)
+    // ============================================
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text || '';
+        return div.innerHTML;
+    }
+
+    // ============================================
+    // INITIAL LOAD
+    // ============================================
+    document.addEventListener('DOMContentLoaded', loadStudents);
+</script>
+
+</body>
+</html>

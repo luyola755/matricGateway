@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matric Gateway | Login</title>
+    <link rel="stylesheet" href="Style.css">
+    <style>
+        /* --- Full Page Layout --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0d1445 0%, #1a237e 50%, #283593 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .login-container .logo {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: #1a237e;
+            margin-bottom: 5px;
+        }
+
+        .login-container .logo span {
+            color: #ff6f00;
+        }
+
+        .login-container h1 {
+            text-align: center;
+            color: #1a237e;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .login-container .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .login-container .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-container .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .login-container .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+
+        .login-container .form-group input:focus {
+            outline: none;
+            border-color: #1a237e;
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+        }
+
+        .login-container .form-group input.error {
+            border-color: #d32f2f;
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+
+        .login-container .form-group .error-message {
+            color: #d32f2f;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .login-container .form-group .error-message.show {
+            display: block;
+        }
+
+        .login-container .password-toggle {
+            position: relative;
+        }
+
+        .login-container .password-toggle input {
+            padding-right: 45px;
+        }
+
+        .login-container .password-toggle .toggle-btn {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+            padding: 4px;
+        }
+
+        .login-container .password-toggle .toggle-btn:hover {
+            color: #333;
+        }
+
+        .login-container .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 15px 0 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .login-container .remember-me input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #1a237e;
+            cursor: pointer;
+        }
+
+        .login-container .auth-btn {
+            width: 100%;
+            padding: 15px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .login-container .auth-btn:hover {
+            background: #0d1445;
+            transform: scale(1.02);
+        }
+
+        .login-container .auth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-container .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .login-container .auth-divider::before,
+        .login-container .auth-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .login-container .auth-divider::before {
+            margin-right: 15px;
+        }
+
+        .login-container .auth-divider::after {
+            margin-left: 15px;
+        }
+
+        .login-container .alert {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .login-container .alert.show {
+            display: block;
+        }
+
+        .login-container .alert-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+
+        .login-container .alert-danger {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+
+        .login-container .alert-info {
+            background: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #90caf9;
+        }
+
+        .login-container .auth-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-container .auth-footer a {
+            color: #1a237e;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-container .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(15px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+            .login-container .logo {
+                font-size: 26px;
+            }
+            .login-container h1 {
+                font-size: 20px;
+            }
+        }
+
+        /* --- Signup Switch Styles --- */
+        .signup-fields {
+            display: none;
+        }
+
+        .signup-fields.active {
+            display: block;
+        }
+
+        .login-container .password-strength {
+            height: 4px;
+            border-radius: 4px;
+            margin-top: 8px;
+            transition: width 0.3s, background 0.3s;
+            width: 0%;
+            background: #e0e0e0;
+        }
+
+        .login-container .password-strength.weak { width: 25%; background: #d32f2f; }
+        .login-container .password-strength.medium { width: 50%; background: #ff9800; }
+        .login-container .password-strength.strong { width: 75%; background: #4caf50; }
+        .login-container .password-strength.very-strong { width: 100%; background: #2e7d32; }
+
+        .login-container .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .login-container .terms-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1a237e;
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .login-container .terms-check a {
+            color: #1a237e;
+            text-decoration: none;
+        }
+
+        .login-container .terms-check a:hover {
+            text-decoration: underline;
+        }
+
+        .login-container .helper-text {
+            color: #888;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .btn-secondary {
+            background: #4CAF50 !important;
+        }
+
+        .btn-secondary:hover {
+            background: #388E3C !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container" id="loginContainer">
+
+        <!-- Logo -->
+        <div class="logo">Matric <span>Gateway</span></div>
+        <h1 id="formTitle">Welcome Back</h1>
+        <p class="subtitle" id="formSubtitle">Login to access your dashboard</p>
+
+        <!-- Alert Messages -->
+        <div id="alertMessage" class="alert"></div>
+
+        <!-- ===== LOGIN FORM ===== -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label for="loginUsername">Username or Email</label>
+                <input type="text" id="loginUsername" placeholder="Enter your username" required autofocus>
+                <div class="error-message" id="loginUsernameError">Please enter your username</div>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <div class="password-toggle">
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-btn" onclick="togglePassword('loginPassword')">👁️</button>
+                </div>
+                <div class="error-message" id="loginPasswordError">Please enter your password</div>
+            </div>
+
+            <div class="remember-me">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember me</label>
+            </div>
+
+            <button type="submit" class="auth-btn" id="loginBtn">Login</button>
+
+            <div class="auth-footer">
+                Don't have an account? <a onclick="switchToSignup()">Sign up here</a>
+            </div>
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-footer" style="margin-top:0;">
+                <a onclick="fillDemoLogin()">🔑 Demo Login</a>
+            </div>
+        </form>
+
+        <!-- ===== SIGNUP FORM ===== -->
+        <form id="signupForm" onsubmit="handleSignup(event)" style="display:none;">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your full name" required>
+                <div class="error-message" id="fullNameError">Please enter your full name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="signupUsername">Username</label>
+                <input type="text" id="signupUsername" placeholder="Choose a username" required>
+                <div class="error-message" id="signupUsernameError">Please choose a username</div>
+                <div class="helper-text">Username must be at least 3 characters</div>
+            </div>
+
+            <div class="form-group">
+                <label for="signupEmail">Email Address</label>
+                <input type="email" id="signupEmail" placeholder="Enter your email address" required>
+                <div class="error-message" id="signupEmailError">Please enter a valid email</div>
+            </div>
+
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <div class="password-toggle">
+                    <input type="password" id="signupPassword" placeholder="Create a password" required oninput="checkPasswordStrength(this.value)">
+                    <button type="button" class="toggle-btn" onclick="togglePassword('signupPassword')">👁️</button>
+                </div>
+                <div class="error-message" id="signupPasswordError">Password must be at least 6 characters</div>
+                <div class="helper-text">Minimum 6 characters</div>
+                <div class="password-strength" id="passwordStrength"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                <div class="error-message" id="confirmError">Passwords do not match</div>
+            </div>
+
+            <div class="terms-check">
+                <input type="checkbox" id="termsCheck" required>
+                <label for="termsCheck">
+                    I agree to the <a href="about.html">Terms of Service</a> and <a href="about.html">Privacy Policy</a>
+                </label>
+            </div>
+
+            <button type="submit" class="auth-btn btn-secondary" id="signupBtn">Create Account</button>
+
+            <div class="auth-footer">
+                Already have an account? <a onclick="switchToLogin()">Login here</a>
+            </div>
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-footer" style="margin-top:0;">
+                <a onclick="fillDemoSignup()">📝 Fill Demo Data</a>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        // --- Toggle Between Login and Signup ---
+        function switchToSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('formTitle').textContent = 'Create Account';
+            document.getElementById('formSubtitle').textContent = 'Join Matric Gateway today';
+            hideAlert();
+            // Clear any errors
+            document.querySelectorAll('.form-group input').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+        }
+
+        function switchToLogin() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('formTitle').textContent = 'Welcome Back';
+            document.getElementById('formSubtitle').textContent = 'Login to access your dashboard';
+            hideAlert();
+            document.querySelectorAll('.form-group input').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+        }
+
+        // --- Toggle Password ---
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggleBtn = input.parentElement.querySelector('.toggle-btn');
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        // --- Alerts ---
+        function showAlert(message, type = 'danger') {
+            const alert = document.getElementById('alertMessage');
+            alert.textContent = message;
+            alert.className = `alert alert-${type} show`;
+        }
+
+        function hideAlert() {
+            const alert = document.getElementById('alertMessage');
+            alert.className = 'alert';
+            alert.textContent = '';
+        }
+
+        // --- Password Strength ---
+        function checkPasswordStrength(password) {
+            const strengthBar = document.getElementById('passwordStrength');
+            let strength = 0;
+            if (password.length >= 6) strength++;
+            if (password.length >= 10) strength++;
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            strengthBar.className = 'password-strength';
+            if (password.length === 0) {
+                strengthBar.style.width = '0%';
+                return;
+            }
+            if (strength <= 1) strengthBar.classList.add('weak');
+            else if (strength === 2) strengthBar.classList.add('medium');
+            else if (strength === 3) strengthBar.classList.add('strong');
+            else strengthBar.classList.add('very-strong');
+        }
+
+        // --- Demo Functions ---
+        function fillDemoLogin() {
+            document.getElementById('loginUsername').value = 'admin';
+            document.getElementById('loginPassword').value = 'admin';
+            showAlert('🔑 Demo: Username: "admin" | Password: "admin"', 'info');
+        }
+
+        function fillDemoSignup() {
+            document.getElementById('fullName').value = 'John Student';
+            document.getElementById('signupUsername').value = 'john_student';
+            document.getElementById('signupEmail').value = 'john@student.co.za';
+            document.getElementById('signupPassword').value = 'password123';
+            document.getElementById('confirmPassword').value = 'password123';
+            document.getElementById('termsCheck').checked = true;
+            checkPasswordStrength('password123');
+            showAlert('✅ Demo data filled! Click "Create Account" to continue.', 'success');
+        }
+
+        // --- Validate Login ---
+        function validateLogin() {
+            const username = document.getElementById('loginUsername');
+            const password = document.getElementById('loginPassword');
+            let isValid = true;
+
+            document.querySelectorAll('#loginForm .form-group input').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('#loginForm .error-message').forEach(el => el.classList.remove('show'));
+
+            if (!username.value.trim()) {
+                username.classList.add('error');
+                document.getElementById('loginUsernameError').classList.add('show');
+                isValid = false;
+            }
+            if (!password.value.trim()) {
+                password.classList.add('error');
+                document.getElementById('loginPasswordError').classList.add('show');
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        // --- Validate Signup ---
+        function validateSignup() {
+            const fullName = document.getElementById('fullName');
+            const username = document.getElementById('signupUsername');
+            const email = document.getElementById('signupEmail');
+            const password = document.getElementById('signupPassword');
+            const confirm = document.getElementById('confirmPassword');
+            const terms = document.getElementById('termsCheck');
+            let isValid = true;
+
+            document.querySelectorAll('#signupForm .form-group input').forEach(el => el.classList.remove('error'));
+            document.querySelectorAll('#signupForm .error-message').forEach(el => el.classList.remove('show'));
+
+            if (!fullName.value.trim()) {
+                fullName.classList.add('error');
+                document.getElementById('fullNameError').classList.add('show');
+                isValid = false;
+            }
+            if (!username.value.trim() || username.value.trim().length < 3) {
+                username.classList.add('error');
+                document.getElementById('signupUsernameError').classList.add('show');
+                isValid = false;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+                email.classList.add('error');
+                document.getElementById('signupEmailError').classList.add('show');
+                isValid = false;
+            }
+            if (!password.value.trim() || password.value.trim().length < 6) {
+                password.classList.add('error');
+                document.getElementById('signupPasswordError').classList.add('show');
+                isValid = false;
+            }
+            if (password.value.trim() !== confirm.value.trim()) {
+                confirm.classList.add('error');
+                document.getElementById('confirmError').classList.add('show');
+                isValid = false;
+            }
+            if (!terms.checked) {
+                showAlert('⚠️ Please agree to the Terms of Service.', 'danger');
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        // Base URL of the Flask API. Since app.py now serves this page
+        // itself on port 5000, a relative '' works whether you open the
+        // site via http://localhost:5000/login.html or the plain domain.
+        const API_BASE = '';
+
+        // --- Handle Login (now talks to the real Flask/SQLite backend) ---
+        function handleLogin(event) {
+            event.preventDefault();
+            hideAlert();
+
+            if (!validateLogin()) return;
+
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+            const rememberMe = document.getElementById('rememberMe').checked;
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginBtn.textContent = 'Logging in...';
+            loginBtn.disabled = true;
+
+            fetch(`${API_BASE}/api/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('username', data.user.username);
+                        localStorage.setItem('fullName', data.user.fullName);
+                        if (rememberMe) localStorage.setItem('rememberMe', 'true');
+
+                        showAlert('✅ Login successful! Redirecting...', 'success');
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    } else {
+                        showAlert(`❌ ${data.message}`, 'danger');
+                        document.querySelector('.login-container').style.animation = 'shake 0.5s ease';
+                        setTimeout(() => document.querySelector('.login-container').style.animation = '', 500);
+                        loginBtn.textContent = 'Login';
+                        loginBtn.disabled = false;
+                    }
+                })
+                .catch(err => {
+                    showAlert('❌ Could not reach the server. Is app.py running?', 'danger');
+                    loginBtn.textContent = 'Login';
+                    loginBtn.disabled = false;
+                });
+        }
+
+        // --- Handle Signup (now talks to the real Flask/SQLite backend) ---
+        function handleSignup(event) {
+            event.preventDefault();
+            hideAlert();
+
+            if (!validateSignup()) return;
+
+            const signupBtn = document.getElementById('signupBtn');
+            signupBtn.textContent = 'Creating account...';
+            signupBtn.disabled = true;
+
+            const userData = {
+                fullName: document.getElementById('fullName').value.trim(),
+                username: document.getElementById('signupUsername').value.trim(),
+                email: document.getElementById('signupEmail').value.trim(),
+                password: document.getElementById('signupPassword').value.trim()
+            };
+
+            fetch(`${API_BASE}/api/signup`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        showAlert('✅ Account created! Redirecting to login...', 'success');
+                        setTimeout(() => {
+                            switchToLogin();
+                            document.getElementById('loginUsername').value = userData.username;
+                            signupBtn.textContent = 'Create Account';
+                            signupBtn.disabled = false;
+                            showAlert('✅ Account created! Please login.', 'success');
+                        }, 1000);
+                    } else {
+                        showAlert(`❌ ${data.message}`, 'danger');
+                        signupBtn.textContent = 'Create Account';
+                        signupBtn.disabled = false;
+                    }
+                })
+                .catch(err => {
+                    showAlert('❌ Could not reach the server. Is app.py running?', 'danger');
+                    signupBtn.textContent = 'Create Account';
+                    signupBtn.disabled = false;
+                });
+        }
+
+        // --- Real-time password match check ---
+        document.getElementById('confirmPassword')?.addEventListener('input', function() {
+            const password = document.getElementById('signupPassword').value;
+            const confirm = this.value;
+            const errorEl = document.getElementById('confirmError');
+            if (confirm && password !== confirm) {
+                errorEl.classList.add('show');
+                this.classList.add('error');
+            } else {
+                errorEl.classList.remove('show');
+                this.classList.remove('error');
+            }
+        });
+
+        // --- Enter key triggers form submit ---
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const loginForm = document.getElementById('loginForm');
+                const signupForm = document.getElementById('signupForm');
+                if (loginForm.style.display !== 'none' && 
+                    (document.activeElement === document.getElementById('loginUsername') ||
+                     document.activeElement === document.getElementById('loginPassword'))) {
+                    loginForm.dispatchEvent(new Event('submit'));
+                }
+            }
+        });
+
+     
+    </script>
+
+</body>
+</html>
