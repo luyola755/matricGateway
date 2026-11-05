@@ -3,127 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matric Gateway | Home</title>
-
-    <link rel="stylesheet" href="Style.css">
-    <script src="auth.js"></script>
-    <script src="script.js" defer></script>
+    <title>Matric Gateway — Your Future Starts Here</title>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to External CSS via Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-
 <body>
 
-<header class="site-header">
-    <div class="header-container">
-        <div class="logo">Matric Gateway</div>
-        <nav class="main-nav">
-            <a href="index.html" class="active">Home</a>
-            <a href="university-applications.html">University Applications</a>
-            <a href="nsfas.html">NSFAS Support</a>
-            <a href="past-papers.html">Past Papers</a>
-            <a href="about.html">About</a>
-            <a href="students.html">Students</a>
-        </nav>
-    </div>   
-</header>
-
-<section class="hero hero-home">
-    <div class="hero-overlay">
-        <h1>Welcome to Matric Gateway</h1>
-        <p>Your one-stop platform for university applications, NSFAS funding and academic support</p>
-    </div>
-</section>
-
-<div id="announcement" style="
-    background: #ffb347;
-    color: #002b5e;
-    padding: 12px;
-    text-align: center;
-    font-weight: bold;
-    transition: opacity 0.3s;
-"></div>
-
-<section class="intro">
-
-    <div class="intro-card">
-
-        <h2>Get Started</h2>
-        <p class="intro-text">Choose where you'd like to go</p>
-
-        <div class="button-container">
-
-            <a href="university-applications.html" class="btn">
-                Go to Uiversity Application
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/index" class="logo">
+                <div class="logo-icon">
+                    <!-- FIXED: Image path to root images folder -->
+                    <img src="/images/logo.png" alt="Matric Gateway Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+                </div>
+                Matric Gateway
             </a>
-
-            <a href="about.html" class="btn">
-                Go to About Us
-            </a>
-
-            <a href="nsfas.html" class="btn">
-                Go to NSFAS Support
-            </a>
-
-            <a href="about.html" class="btn">
-                Go to About Us
-            </a>
-
             
+            <div class="nav-links">
+                <a href="/index" class="active">Home</a>
+                 <a href="/dashboard">Dashboard</a>  
+                <a href="/universities">Universities</a>
+                <a href="/aps">APS Calculator</a>
+                <a href="/past-papers">Past Papers</a>
+                <a href="/nsfas">NSFAS Support</a>
+            </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-<footer class="footer">
-
-    <div class="footer-container">
-
-        <div class="footer-box">
-            <h3>Quick Links</h3>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-           <a href="about.html#contact">Contact</a>
-<a href="nsfas.html">Help Center</a>
-        </div>
-
-        <div class="footer-box">
-            <h3>Student Support</h3>
-            <p>Study help available</p>
-            <p>Response within 24–48 hours</p>
-            <p>Email: support@matricgateway.co.za</p>
-        </div>
-
-        <div class="footer-box">
-            <h3>Follow Us</h3>
-
-            <div class="socials">
-                <a href="https://www.facebook.com" target="_blank">
-                    <img src="image_Matricgateway/facebook.png" alt="Facebook">
-                </a>
-
-                <a href="https://www.instagram.com" target="_blank">
-                    <img src="image_Matricgateway/insta.png" alt="Instagram">
-                </a>
-
-                <a href="https://www.youtube.com" target="_blank">
-                    <img src="image_Matricgateway/youtube.png" alt="YouTube">
-                </a>
-
-                <a href="https://www.tiktok.com" target="_blank">
-                    <img src="image_Matricgateway/TikTok.png" alt="TikTok">
-                </a>
+            <div class="search-bar" id="navSearchBar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" placeholder="Search..." readonly style="cursor: pointer;">
+                <span class="shortcut">Ctrl K</span>
             </div>
         </div>
+    </nav>
 
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">Your Path to Higher Education</div>
+                <h1 class="hero-title">Your Future <span class="highlight">Starts Here.</span></h1>
+                <p class="hero-description">
+                    Matric Gateway brings everything you need for life after matric into one place — find the right university, check your APS, practise with past papers and understand NSFAS funding.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="/universities" class="btn btn-primary">
+                        Explore Universities
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="/aps" class="btn btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        Calculate My APS
+                    </a>
+                </div>
+
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Free to use
+                    </div>
+                    <div class="hero-feature">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        No sign-up needed
+                    </div>
+                    <div class="hero-feature">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Links to official sources
+                    </div>
+                </div>
+            </div>
+
+            <!-- HERO IMAGE -->
+            <div class="hero-image-wrapper" id="heroImageWrapper">
+                <!-- FIXED: Image path to root images folder -->
+                <img src="/images/students.jpeg" alt="Students smiling on campus" id="heroImage">
+                
+                <!-- Floating Stats Card -->
+                <div class="hero-stats-card">
+                    <div class="hero-stats-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                    </div>
+                    <div class="hero-stats-text">
+                        <h4>26</h4>
+                        <p>public universities · 9 provinces</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CARDS SECTION -->
+    <main class="main-content">
+        <div class="cards-grid">
+            <!-- Card 1: Universities -->
+            <a href="/universities" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                </div>
+                <h3>Universities</h3>
+                <p>Browse all 26 public universities across the nine provinces.</p>
+                <div class="card-link">
+                    Find a university
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Card 2: APS Calculator -->
+            <a href="/aps" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </div>
+                <h3>APS Calculator</h3>
+                <p>Enter your marks and see your Admission Point Score instantly.</p>
+                <div class="card-link">
+                    Calculate APS
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Card 3: Past Papers -->
+            <a href="/past-papers" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <h3>Past Papers</h3>
+                <p>Search exam papers and memos by subject, year and exam type.</p>
+                <div class="card-link">
+                    Find papers
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+
+            <!-- Card 4: NSFAS Support -->
+            <a href="/nsfas" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                </div>
+                <h3>NSFAS Support</h3>
+                <p>Step-by-step funding guidance, a document checklist and FAQs.</p>
+                <div class="card-link">
+                    Get NSFAS help
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- POPULAR UNIVERSITIES SECTION -->
+    <section class="popular-section">
+        <div class="section-header">
+            <div class="section-title-group">
+                <h4>Quick Access</h4>
+                <h2>Popular universities</h2>
+            </div>
+            <a href="/universities" class="view-all-link">
+                View all
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+        <div class="university-grid">
+            <!-- Uni 1 -->
+            <a href="/universities/wits" class="uni-card">
+                <div class="uni-logo">Wits</div>
+                <div class="uni-info">
+                    <h4>University of the Witwatersrand</h4>
+                    <p>Johannesburg, Gauteng</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+            <!-- Uni 2 -->
+            <a href="/universities/uct" class="uni-card">
+                <div class="uni-logo">UCT</div>
+                <div class="uni-info">
+                    <h4>University of Cape Town</h4>
+                    <p>Cape Town, Western Cape</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+            <!-- Uni 3 -->
+            <a href="/universities/up" class="uni-card">
+                <div class="uni-logo">UP</div>
+                <div class="uni-info">
+                    <h4>University of Pretoria</h4>
+                    <p>Pretoria, Gauteng</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+            <!-- Uni 4 -->
+            <a href="/universities/ukzn" class="uni-card">
+                <div class="uni-logo">UKZN</div>
+                <div class="uni-info">
+                    <h4>University of KwaZulu-Natal</h4>
+                    <p>Durban, KwaZulu-Natal</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+            <!-- Uni 5 -->
+            <a href="/universities/uj" class="uni-card">
+                <div class="uni-logo">UJ</div>
+                <div class="uni-info">
+                    <h4>University of Johannesburg</h4>
+                    <p>Johannesburg, Gauteng</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+            <!-- Uni 6 -->
+            <a href="/universities/stellenbosch" class="uni-card">
+                <div class="uni-logo">SU</div>
+                <div class="uni-info">
+                    <h4>Stellenbosch University</h4>
+                    <p>Stellenbosch, Western Cape</p>
+                </div>
+                <div class="uni-arrow">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+            </a>
+        </div>
+
+        <div class="quick-links-grid">
+            <!-- Quick Link 1: NSFAS Document Checklist -->
+            <a href="/nsfas#document-checklist" class="quick-link-card">
+                <div class="quick-link-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                </div>
+                <div class="quick-link-text">
+                    <h4>NSFAS document checklist</h4>
+                    <p>Know what to prepare before you apply.</p>
+                </div>
+            </a>
+
+            <!-- Quick Link 2: APS -->
+            <a href="/aps" class="quick-link-card">
+                <div class="quick-link-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </div>
+                <div class="quick-link-text">
+                    <h4>How is APS calculated?</h4>
+                    <p>See the scoring method used, step by step.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <div class="logo-icon" style="background-color: transparent;">
+                        <!-- FIXED: Image path to root images folder -->
+                        <img src="/images/logo.png" alt="Matric Gateway Logo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%;">
+                    </div>
+                    <h3 style="margin-bottom: 0;">Matric Gateway</h3>
+                </div>
+                <p>Your Path to Higher Education.</p>
+                <p>An independent student guide. Always confirm details with official sources.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/universities">Universities</a></li>
+                    <li><a href="/aps">APS Calculator</a></li>
+                    <li><a href="/past-papers">Past Papers</a></li>
+                    <li><a href="/nsfas">NSFAS Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Official Resources</h4>
+                <ul>
+                    <li>
+                        <a href="https://www.nsfas.org.za" target="_blank" rel="noopener noreferrer">
+                            NSFAS official website 
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.education.gov.za/Curriculum/PastPapers.aspx" target="_blank" rel="noopener noreferrer">
+                            Department of Basic Education papers
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.dhet.gov.za" target="_blank" rel="noopener noreferrer">
+                            Dept. of Higher Education & Training 
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Matric Gateway. Not affiliated with any university, NSFAS or the Department of Basic Education.</p>
+        </div>
+    </footer>
+
+    <!-- SEARCH MODAL OVERLAY (ADDED) -->
+    <div class="search-modal-overlay" id="searchModal">
+        <div class="search-modal-content">
+            <!-- Search Input Area -->
+            <div class="search-input-container">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="searchInput" placeholder="Search universities, subjects or NSFAS help...">
+                <button class="close-search-btn" id="closeSearchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+
+            <!-- Search Results Area -->
+            <div class="search-results-container" id="searchResults">
+                
+                <!-- Category: Pages -->
+                <div class="search-category" data-category="pages">
+                    <div class="category-title">Pages</div>
+                    <a href="/universities" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Explore universities
+                    </a>
+                    <a href="/aps" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        APS Calculator
+                    </a>
+                    <a href="/past-papers" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Past Papers
+                    </a>
+                    <a href="/nsfas" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        NSFAS Support
+                    </a>
+                </div>
+
+                <!-- Category: Universities -->
+                <div class="search-category" data-category="universities">
+                    <div class="category-title">Universities</div>
+                    <a href="/universities/nmu" class="search-result-item" data-title="nelson mandela university">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        Nelson Mandela University <span class="result-province">Eastern Cape</span>
+                    </a>
+                    <a href="/universities/rhodes" class="search-result-item" data-title="rhodes university">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        Rhodes University <span class="result-province">Eastern Cape</span>
+                    </a>
+                    <a href="/universities/ufs" class="search-result-item" data-title="university of the free state">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        University of the Free State <span class="result-province">Free State</span>
+                    </a>
+                    <a href="/universities/wits" class="search-result-item" data-title="university of the witwatersrand wits">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        University of the Witwatersrand <span class="result-province">Gauteng</span>
+                    </a>
+                    <a href="/universities/uct" class="search-result-item" data-title="university of cape town uct">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+                        University of Cape Town <span class="result-province">Western Cape</span>
+                    </a>
+                </div>
+
+                <!-- Category: Past Paper Subjects -->
+                <div class="search-category" data-category="subjects">
+                    <div class="category-title">Past paper subjects</div>
+                    <a href="/past-papers" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Mathematics
+                    </a>
+                    <a href="/past-papers" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Physical Sciences
+                    </a>
+                    <a href="/past-papers" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        Life Sciences
+                    </a>
+                </div>
+
+                <!-- Category: NSFAS -->
+                <div class="search-category" data-category="nsfas">
+                    <div class="category-title">NSFAS help</div>
+                    <a href="/nsfas#what-is-nsfas" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        What is NSFAS?
+                    </a>
+                    <a href="/nsfas#how-to-apply" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        How to apply
+                    </a>
+                    <a href="/nsfas#document-checklist" class="search-result-item">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        Document checklist
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </div>
 
-    <div class="footer-bottom">
-        <p>© 2026 Matric Gateway | Built for Students</p>
-    </div>
-
-</footer>
-
+    <!-- Link to External JavaScript via Flask -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

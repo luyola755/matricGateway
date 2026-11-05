@@ -1,0 +1,111 @@
+/* =========================================
+   CSS for University of Cape Town (UCT)
+   ========================================= */
+:root {
+    --primary-dark: #0f172a;
+    --primary-blue: #1e3a8a;
+    --page-hero-bg: #102a56;
+    --accent-orange: #f59e0b;
+    --accent-orange-light: #fef3c7;
+    --accent-blue: #2563eb;
+    --accent-blue-light: #eff6ff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --border-color: #e2e8f0;
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* NAVIGATION */
+.navbar { background-color: var(--white); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+.nav-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; color: var(--primary-blue); text-decoration: none; }
+.logo-icon { width: 40px; height: 40px; background-color: var(--primary-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; overflow: hidden; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: 15px; font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary-blue); }
+.nav-links a.active { background-color: var(--accent-blue-light); padding: 8px 16px; border-radius: 8px; }
+.search-bar { display: flex; align-items: center; background-color: var(--bg-light); border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 12px; width: 240px; }
+.search-bar svg { color: var(--text-muted); margin-right: 8px; }
+.search-bar input { border: none; background: transparent; outline: none; font-family: inherit; font-size: 14px; width: 100%; }
+.search-bar .shortcut { font-size: 11px; color: var(--text-muted); background-color: var(--white); border: 1px solid var(--border-color); padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+
+/* HERO */
+.page-hero { background-color: var(--page-hero-bg); background-image: linear-gradient(rgba(16, 42, 86, 0.95), rgba(16, 42, 86, 0.95)), linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 100% 100%, 40px 40px, 40px 40px; padding: 64px 0 80px 0; color: var(--white); }
+.hero-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #94a3b8; margin-bottom: 32px; flex-wrap: wrap; }
+.breadcrumbs a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+.breadcrumbs a:hover { color: var(--white); }
+.breadcrumbs .separator { font-size: 12px; }
+.breadcrumbs .current { color: var(--white); }
+.hero-badge { color: var(--accent-orange); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+.hero-title { font-size: 48px; font-weight: 800; margin-bottom: 16px; line-height: 1.1; }
+.hero-location { display: flex; align-items: center; gap: 8px; font-size: 18px; color: #cbd5e1; margin-bottom: 32px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-family: inherit; font-weight: 600; font-size: 15px; cursor: pointer; border: none; text-decoration: none; transition: all 0.2s; }
+.btn-primary { background-color: var(--accent-orange); color: var(--primary-dark); }
+.btn-primary:hover { background-color: #d97706; }
+.btn-secondary { background-color: transparent; color: var(--white); border: 1px solid rgba(255, 255, 255, 0.3); }
+.btn-secondary:hover { background-color: rgba(255, 255, 255, 0.1); }
+
+/* MAIN CONTENT */
+.main-content { flex-grow: 1; padding: 48px 0 80px; }
+.content-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start; }
+.left-column { display: flex; flex-direction: column; gap: 24px; }
+.info-card { background-color: var(--white); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.card-header h2 { font-size: 24px; font-weight: 700; color: var(--primary-dark); }
+.badge-not-verified { background-color: var(--accent-orange-light); color: #92400e; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 20px; }
+.info-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+.info-card a { color: var(--accent-blue); text-decoration: none; font-weight: 500; }
+.info-card a:hover { text-decoration: underline; }
+
+.right-column { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-card { background-color: var(--white); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.sidebar-card h3 { font-size: 18px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+.fact-item { margin-bottom: 16px; }
+.fact-item:last-child { margin-bottom: 0; }
+.fact-label { font-size: 13px; color: var(--text-muted); margin-bottom: 2px; }
+.fact-value { font-size: 15px; color: var(--primary-dark); font-weight: 500; }
+.fact-value a { color: var(--accent-blue); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+.fact-value a:hover { text-decoration: underline; }
+.action-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; text-decoration: none; transition: border-color 0.2s; border: 1px solid var(--border-color); background-color: var(--white); border-radius: 16px; }
+.action-card:hover { border-color: var(--accent-blue); }
+.action-icon { width: 40px; height: 40px; background-color: var(--accent-blue-light); color: var(--accent-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.action-text { font-size: 16px; font-weight: 600; color: var(--primary-dark); }
+.info-banner { background-color: #e0f2fe; border: 1px solid #bae6fd; border-radius: 16px; padding: 24px; }
+.info-banner h4 { font-size: 16px; font-weight: 600; color: var(--primary-dark); margin-bottom: 8px; }
+.info-banner p { font-size: 14px; color: #0369a1; }
+
+/* FOOTER */
+.footer { background-color: var(--primary-dark); color: var(--white); padding: 64px 24px 32px; }
+.footer-container { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+.footer-brand p { color: #94a3b8; font-size: 14px; max-width: 300px; line-height: 1.6; margin-bottom: 16px; }
+.footer-links h4 { color: var(--accent-orange); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom { max-width: 1280px; margin: 0 auto; padding-top: 32px; border-top: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #64748b; }
+
+@media (max-width: 1024px) { .content-container { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr; gap: 32px; } }
+@media (max-width: 768px) { .nav-links, .search-bar { display: none; } .hero-title { font-size: 36px; } .hero-buttons { flex-direction: column; } .btn { width: 100%; justify-content: center; } .footer-bottom { flex-direction: column; gap: 16px; text-align: center; } }

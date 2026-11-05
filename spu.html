@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sol Plaatje University — Matric Gateway</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FIXED: CSS Link via Flask -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='uni-details.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- FIXED: Logo link & image path -->
+            <a href="/index" class="logo">
+                <div class="logo-icon"><img src="/images/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                Matric Gateway
+            </a>
+            
+            <!-- FIXED: Nav Links -->
+            <div class="nav-links">
+                <a href="/index">Home</a>
+                <a href="/universities" class="active">Universities</a>
+                <a href="/aps">APS Calculator</a>
+                <a href="/past-papers">Past Papers</a>
+                <a href="/nsfas">NSFAS Support</a>
+            </div>
+            
+            <div class="search-bar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" placeholder="Search..."><span class="shortcut">Ctrl K</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="hero-container">
+            <!-- FIXED: Breadcrumbs -->
+            <div class="breadcrumbs">
+                <a href="/index">Home</a><span class="separator">&gt;</span>
+                <a href="/universities">Universities</a><span class="separator">&gt;</span>
+                <a href="/universities/northern-cape">Northern Cape</a><span class="separator">&gt;</span>
+                <span class="current">SPU</span>
+            </div>
+            
+            <div class="hero-badge">COMPREHENSIVE UNIVERSITY</div>
+            <h1 class="hero-title">Sol Plaatje University</h1>
+            <p class="hero-location">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Kimberley, Northern Cape
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="https://www.spu.ac.za" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Visit official website <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <!-- FIXED: Other universities button -->
+                <a href="/universities/northern-cape" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Other universities in Northern Cape
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-container">
+            <div class="left-column">
+                <div class="info-card">
+                    <div class="card-header"><h2>Admission requirements</h2><span class="badge-not-verified">Not yet verified</span></div>
+                    <p>We haven't verified SPU's admission requirements yet, so we don't show any. Requirements differ for every qualification — check the latest undergraduate prospectus on the official website.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header"><h2>Prospectus</h2><span class="badge-not-verified">Not yet verified</span></div>
+                    <p>No verified prospectus download is available here yet. You'll usually find it under "Study" or "Prospective students" on the official website.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-header"><h2>Applications & closing dates</h2></div>
+                    <p>Application dates change every year, so we don't list them. Visit <a href="https://www.spu.ac.za" target="_blank">www.spu.ac.za</a> for the current application process and deadlines.</p>
+                </div>
+            </div>
+            <div class="right-column">
+                <div class="sidebar-card">
+                    <h3>Quick facts</h3>
+                    <div class="fact-item"><div class="fact-label">Province</div><div class="fact-value">Northern Cape</div></div>
+                    <div class="fact-item"><div class="fact-label">Main location</div><div class="fact-value">Kimberley</div></div>
+                    <div class="fact-item"><div class="fact-label">Type</div><div class="fact-value">Comprehensive university</div></div>
+                    <div class="fact-item"><div class="fact-label">Official website</div><div class="fact-value"><a href="https://www.spu.ac.za" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>spu.ac.za</a></div></div>
+                </div>
+                
+                <!-- FIXED: Action Cards -->
+                <a href="/aps" class="action-card"><div class="action-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div><div class="action-text">Check your APS</div></a>
+                <a href="/nsfas" class="action-card"><div class="action-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div><div class="action-text">Need funding? NSFAS guide</div></a>
+                
+                <div class="info-banner"><h4>Always double-check</h4><p>Information can change. The university's official website is the final authority.</p></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <div class="logo-icon"><img src="/images/logo.png" alt="Logo" style="width:100%;height:100%;"></div>
+                    <h3>Matric Gateway</h3>
+                </div>
+                <p>Your Path to Higher Education.</p><p>An independent student guide.</p>
+            </div>
+            
+            <!-- FIXED: Footer Links -->
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/universities">Universities</a></li>
+                    <li><a href="/aps">APS Calculator</a></li>
+                    <li><a href="/past-papers">Past Papers</a></li>
+                    <li><a href="/nsfas">NSFAS Support</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links"><h4>Official Resources</h4><ul><li><a href="https://www.nsfas.org.za" target="_blank">NSFAS official website</a></li><li><a href="https://www.education.gov.za" target="_blank">Department of Basic Education papers</a></li><li><a href="https://www.dhet.gov.za" target="_blank">Dept. of Higher Education</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 Matric Gateway. Not affiliated with any university, NSFAS or the Department of Basic Education.</p></div>
+    </footer>
+    
+    <!-- FIXED: JS Link via Flask -->
+    <script src="{{ url_for('static', filename='uni-detail.js') }}"></script>
+</body>
+</html>

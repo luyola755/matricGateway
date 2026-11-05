@@ -1,0 +1,478 @@
+/* --- Global Reset & Variables --- */
+:root {
+    --bg-color: #0b1120; /* Dark navy background */
+    --primary-orange: #F59E0B; /* Matches the button color */
+    --primary-hover: #d97706;
+    --text-dark: #0f172a; /* Very dark text */
+    --text-gray: #64748b;
+    --input-bg: #f8fafc;
+    --border-color: #e2e8f0;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Main Layout Container --- */
+.main-container {
+    display: flex;
+    background-color: var(--white);
+    width: 100%;
+    max-width: 1150px;
+    min-height: 750px; /* Fixed height to keep layout stable */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Left Side: Hero Image & Text Overlay --- */
+.hero-section {
+    flex: 1.1;
+    /* UPDATED PATH: Points to Flask's custom image route */
+    background-image: url('/images/students-campus.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px;
+}
+
+.badge {
+    background-color: rgba(245, 158, 11, 0.85); /* Semi-transparent orange */
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    width: fit-content;
+    border: 1px solid rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+    align-self: flex-start;
+}
+
+.bottom-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero-text .highlight {
+    color: var(--primary-orange);
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 450px;
+    line-height: 1.5;
+}
+
+.stats-card {
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 15px 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: fit-content;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.icon-box {
+    background-color: #FEF3C7;
+    color: var(--primary-orange);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.stats-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-text strong {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.stats-text span {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-top: 2px;
+}
+
+/* --- Right Side: Form Section --- */
+.form-section {
+    flex: 1;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+/* Toggle Switch */
+.auth-toggle {
+    display: flex;
+    background-color: #f1f5f9;
+    border-radius: 50px;
+    padding: 6px;
+    margin-bottom: 35px;
+    width: 100%;
+}
+
+.toggle-btn {
+    flex: 1;
+    border: none;
+    background: none;
+    padding: 12px 0;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-gray);
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.toggle-btn.active {
+    background-color: var(--primary-orange);
+    color: var(--text-dark); /* Dark text on active orange */
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+}
+
+/* Form Views */
+.form-view {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-header {
+    margin-bottom: 25px;
+}
+
+.form-header h2 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.form-header p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    color: var(--text-dark);
+    appearance: none; /* Removes default select arrow */
+}
+
+/* Custom select arrow */
+.input-group select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+}
+
+.input-group input::placeholder,
+.input-group select:invalid {
+    color: #94a3b8;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-orange);
+    background-color: #fff;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Options (Checkbox & Links) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.signup-options {
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 30px;
+    user-select: none;
+}
+
+.remember-me input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.remember-me input:checked ~ .checkmark {
+    background-color: var(--primary-orange);
+    border-color: var(--primary-orange);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.remember-me input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.forgot-link {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.terms-link {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    background-color: var(--primary-orange);
+    color: var(--text-dark); /* Dark text based on the image */
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--text-gray);
+    font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.divider span {
+    padding: 0 15px;
+}
+
+.btn-google {
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.btn-google:hover {
+    background-color: #f8fafc;
+}
+
+.btn-google img {
+    width: 20px;
+    height: 20px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.form-footer a {
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .hero-section {
+        height: 250px;
+        flex: none;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .hero-content {
+        padding: 25px;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-text p {
+        display: none; /* Hide on small screens to save space */
+    }
+
+    .stats-card {
+        display: none;
+    }
+
+    .form-section {
+        padding: 30px 25px;
+        border-radius: 0 0 20px 20px;
+    }
+}
